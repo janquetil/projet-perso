@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Référencement manga/anime</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="src/css/bulma.min.css">
+    <link rel="stylesheet" href="src/css/mainhome.css">
+
+    <!-- CSS -->
+
+    <!-- FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- FONT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <?php
+    session_start();
+    include('src/_inc_parametres.php');
+    include('src/_inc_connexion.php');
+    if($_SESSION['prio'] == 'user' and $_SESSION['pseudo'] == 'firling'){
+      if (time() - $_SESSION['last_time_see'] < 1800) {
+        $_SESSION['last_time_see'] = time();
+        //on affiche le menu
+        include('src/header.php');
+
+
+
+      }
+      else {
+        $_SESSION = array();
+        session_destroy();
+        header('Location: home.php');
+        exit();
+      }
+    }
+    else {
+      header('Location: index.php');
+      exit();
+    }
+    ?>
+
+    <script type="text/javascript" src="src/js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      $('#deco').click(function(event){
+        event.preventDefault();
+
+        $.post(
+          'deconnexion.php',
+
+          {
+            bite: 'zgeg'
+          },
+
+          function(data){
+            if(data.includes("success")){
+              window.location.replace("index.php");
+            }
+          },
+
+          'text'
+        );
+      });
+
+      $(document).ready(function() {
+
+        var nbClick = 0;
+
+        (function() {
+          var burger = document.querySelector('.burger');
+          var nav = document.querySelector('#'+burger.dataset.target);
+
+          burger.addEventListener('click', function(){
+            burger.classList.toggle('is-active');
+            nav.classList.toggle('is-active');
+            if(nbClick == 0){
+              $('#'+burger.dataset.target).css({"background-color": "rgba(128, 128, 128, 0.3)"});
+              $('#navMenu').removeClass('navbar-menu');
+              $('#navMenu').addClass('menu-list')
+            }
+            if(nbClick % 2 == 0){;
+              $('#'+burger.dataset.target).css({"display": "table"});
+            }
+            else {
+              $('#'+burger.dataset.target).css({"display": "none"});
+            }
+
+            nbClick = nbClick + 1
+          });
+        })();
+
+        var url = document.location.href;
+        if(url.includes('admin.php')){
+          $('#admin').addClass('disabled');
+          $('#admin').css({"color": '#038ff9'});
+        }
+    	});
+    </script>
+  </body>
+</html>

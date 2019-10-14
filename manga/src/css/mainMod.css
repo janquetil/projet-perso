@@ -1,0 +1,40 @@
+.formMod label{
+  color: #038ff9;
+}
+
+#mabActu:hover {
+  color: #ffffff;
+}
+
+#cancel{
+  color: #038ff9;
+}
+
+#tableBoss td {
+  height: 50px;
+  text-align: left;
+  vertical-align: top;
+  display: table-cell;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.modifForm {
+  background-image: url('../../photoSuggest/Modif.png');
+  background-color: rgba(0, 0, 0, 0);
+  width: 23px;
+}
+
+.supprForm {
+  background-image: url('../../photoSuggest/Suppr.png');
+  background-color: rgba(0, 0, 0, 0);
+  width: 23px;
+}
+
+.modificationSuccess {
+  color: #00ff15;
+}
+
+.modificationPresqueSuccess {
+  color: #ff8c00;
+}

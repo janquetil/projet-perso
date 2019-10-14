@@ -1,0 +1,13 @@
+﻿<?php
+// ce fichier est destiné à être inclus dans les pages PHP qui ont besoin de se connecter à une base de données
+// 2 possibilités pour inclure ce fichier :
+//     include_once ('_inc_parametres.php');
+//     require_once ('_inc_parametres.php');
+
+// connexion de l'application cliente au SGBD MySQL
+$HOTE = "90.59.223.153";	// nom du serveur de données : localhost ou serv-wamp1 ou serv-wamp1
+$PORT = '3306';			// numéro du port
+$USER = "firling";			// nom de l'utilisateur
+$PWD  = "forgeron";		// son mot de passe
+$BDD  = "manga";		// nom de la base de données
+?>

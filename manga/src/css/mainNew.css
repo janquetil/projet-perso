@@ -1,0 +1,15 @@
+.title{
+  text-align: center;
+  color: #ffffff;
+}
+
+.box {
+  margin-bottom: 1.5rem;
+  background-color: rgba(255,255,255,0.5);
+  margin-right: 1rem;
+}
+
+.last-chapter{
+  padding-left: 20px;
+  padding-top: 20px;
+}
